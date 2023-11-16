@@ -12,16 +12,25 @@ const questions = [
   
   let currentQuestionIndex = 0;
   
+  
   function loadQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
-    document.getElementById("question").innerText = currentQuestion.question;
+    const questionElement = document.getElementById("question");
+  
+    if (currentQuestion) {
+      questionElement.textContent = currentQuestion.question;
+    } else {
+      questionElement.textContent = "No more questions";
+    }
+    console.log(questionElement);
   }
   
+  
   function checkAnswer() {
-    const userAnswer = document.getElementById("answerInput").value.trim().toLowerCase();
+    const userAnswer = document.getElementById("answerInput").value.trim();
     const currentQuestion = questions[currentQuestionIndex];
   
-    if (userAnswer === currentQuestion.correctAnswer.toLowerCase()) {
+    if (userAnswer === currentQuestion.correctAnswer.trim()) {
       alert("Correct!");
     } else {
       alert(`Incorrect. The correct answer is: ${currentQuestion.correctAnswer}`);

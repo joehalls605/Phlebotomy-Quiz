@@ -1,20 +1,21 @@
-<!DOCTYPE <html>
-    <html>
-    <head>
-        <!-- Configure viewport settings for responsive design -->
-        <meta name="viewport" content="width=device-width", initial-scale="1.0">
-        <link rel="stylesheet" href="style.css">
-        <title>Phebotomy Test</title>
-    </head>
-    <body>
-        <div class="quiz-container">
-            <h1>Phebotomy Test</h1>
-            <p id="question"> Question here</p>
-            <input type="text" id="answerInput" placeholder="Type your answer...">
-            <button id="next-btn" onclick="nextQuestion()">Next</button>
-        </div>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Phlebotomy Test</title>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Phlebotomy Test</h1>
+    <p id="question"></p>
+    <input type="text" id="answerInput" placeholder="Type your answer...">
+    <button id="next-btn" onclick="nextQuestion()">Next</button>
+  </div>
 
-    <script src="script.js"></script>
-    </html>
-</html>
+  <script src="script.js"></script>
+
+  <script>
+    loadQuestion(); // Call loadQuestion() after the script has finished loading
+  </script>
+</body>
