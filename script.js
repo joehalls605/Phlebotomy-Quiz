@@ -1,16 +1,130 @@
 const questions = [
     {
       question: "What does CBC stand for in phlebotomy?",
-      correctAnswer: "Complete Blood Count"
+      correctAnswer: "Complete Blood Count",
+      hint: "Complete B..."
     },
-    {
-      question: "Which vein is commonly used for venipuncture?",
-      correctAnswer: "Median cubital vein"
-    },
+    // {
+    //   question: "Which vein is commonly used for venipuncture?",
+    //   correctAnswer: "Median cubital vein",
+    //   hint: "Median c..."
+    // },
+    // {
+    //   question: "What is the purpose of using a tourniquet during venipuncture?",
+    //   correctAnswer: "To make veins more visible and easier to access",
+    //   hint: "To enhance vein visibility..."
+    // },
+    // {
+    //   question: "Which anticoagulant is commonly used in blood collection tubes for coagulation studies?",
+    //   correctAnswer: "Sodium citrate",
+    //   hint: "Sodium c..."
+    // },
+    // {
+    //   question: "Which anticoagulant is commonly used in blood collection tubes for coagulation studies?",
+    //   correctAnswer: "Sodium citrate",
+    //   hint: "Sodium c..."
+    // },
+    // {
+    //   question: "What is the purpose of the Order of Draw in venipuncture?",
+    //   correctAnswer: "To prevent cross-contamination of additives between tubes",
+    //   hint: "Prevents cross-contamination..."
+    // },
+    // {
+    //   question: "Which color-coded tube is commonly used for serum tests in phlebotomy?",
+    //   correctAnswer: "Red",
+    //   hint: "Red tube for serum tests..."
+    // },
+    // {
+    //   question: "What is the term for the liquid portion of blood that remains after clotting?",
+    //   correctAnswer: "Serum",
+    //   hint: "Liquid portion after clotting..."
+    // },
+    // {
+    //   question: "Why is it important to label blood collection tubes accurately?",
+    //   correctAnswer: "To ensure proper patient identification and sample integrity",
+    //   hint: "Ensures patient identification..."
+    // },
+    // {
+    //   question: "What is the purpose of the basilic vein in venipuncture?",
+    //   correctAnswer: "It is a common site for blood collection in the antecubital area",
+    //   hint: "Common site in antecubital area..."
+    // },
+    // {
+    //   question: "What is the recommended angle for needle insertion during routine venipuncture?",
+    //   correctAnswer: "15 to 30 degrees",
+    //   hint: "15-30 degrees for routine venipuncture..."
+    // },
+    // {
+    //   question: "Which test requires the use of a fasting blood sample?",
+    //   correctAnswer: "Glucose tolerance test",
+    //   hint: "Requires fasting blood sample..."
+    // },
+    // {
+    //   question: "What is the primary purpose of warming the site before capillary puncture?",
+    //   correctAnswer: "To increase blood flow and improve sample collection",
+    //   hint: "Increases blood flow for sample collection..."
+    // },
+    // {
+    //   question: "Which blood component is primarily responsible for oxygen transport?",
+    //   correctAnswer: "Red blood cells",
+    //   hint: "Carries oxygen..."
+    // },
+    // {
+    //   question: "What is the recommended technique for cleaning the venipuncture site?",
+    //   correctAnswer: "Use a circular motion from the center to the periphery",
+    //   hint: "Clean in a circular motion..."
+    // },
+    // {
+    //   question: "Which vein is often used for venipuncture in pediatric patients?",
+    //   correctAnswer: "Dorsal hand veins",
+    //   hint: "Used for venipuncture in pediatric patients..."
+    // },
+    // {
+    //   question: "What is the term for the process of stopping bleeding following venipuncture?",
+    //   correctAnswer: "Hemostasis",
+    //   hint: "Process of stopping bleeding..."
+    // },
+    // {
+    //   question: "Why is it important to invert blood collection tubes after filling them?",
+    //   correctAnswer: "To ensure proper mixing of the blood with additives",
+    //   hint: "Ensures proper mixing with additives..."
+    // },
+    // {
+    //   question: "Which organization provides guidelines for phlebotomy practices?",
+    //   correctAnswer: "Clinical and Laboratory Standards Institute (CLSI)",
+    //   hint: "Provides phlebotomy guidelines..."
+    // },
+    // {
+    //   question: "What is the purpose of a chain of custody form in specimen collection?",
+    //   correctAnswer: "To document and track the handling of forensic specimens",
+    //   hint: "Documents handling of forensic specimens..."
+    // },
+    // {
+    //   question: "Which color-coded tube is typically used for complete blood count (CBC) tests?",
+    //   correctAnswer: "Lavender",
+    //   hint: "Lavender tube for CBC tests..."
+    // },
+    // {
+    //   question: "What is the primary purpose of a tourniquet during venipuncture?",
+    //   correctAnswer: "To restrict venous blood flow and make veins more visible",
+    //   hint: "Restricts blood flow for better visibility..."
+    // },
+    // {
+    //   question: "Why is it important to check the expiration date of blood collection tubes?",
+    //   correctAnswer: "To ensure the integrity of additives in the tube",
+    //   hint: "Ensures additive integrity..."
+    // },
+    // {
+    //   question: "Which antiseptic is commonly used for cleaning the venipuncture site?",
+    //   correctAnswer: "Isopropyl alcohol",
+    //   hint: "Common antiseptic for venipuncture site..."
+    // },
+    
     // Add more questions as needed
   ];
   
   let currentQuestionIndex = 0;
+  const score = 0;
   
   
   function loadQuestion() {
@@ -24,6 +138,12 @@ const questions = [
     }
     console.log(questionElement);
   }
+
+  function gameOver(){
+    const finalScore = `Your final score is ${score}`;
+    const finalScoreElement = document.getElementById("game-over");
+    finalScoreElement.textContent = finalScore;
+  }
   
   
   function checkAnswer() {
@@ -32,6 +152,7 @@ const questions = [
   
     if (userAnswer === currentQuestion.correctAnswer.trim()) {
       alert("Correct!");
+      score ++;
     } else {
       alert(`Incorrect. The correct answer is: ${currentQuestion.correctAnswer}`);
     }
@@ -40,7 +161,7 @@ const questions = [
     if (currentQuestionIndex < questions.length) {
       loadQuestion();
     } else {
-      alert("Quiz completed!");
+      gameOver();
       resetQuiz();
     }
   }
