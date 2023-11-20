@@ -6,19 +6,23 @@
   <title>Phlebotomy Test</title>
 </head>
 <body>
+  <div>
+    <h1 class="header-container">Phlebotomy Test</h1>
+    <p id="header-info"></p>
+  </div>
   <div class="quiz-container">
-    <h1>Phlebotomy Test</h1>
     <p id="question"></p>
-    <input type="text" id="answerInput" placeholder="Type your answer...">
-    <button id="next-btn" onclick="nextQuestion()">Next</button>
-    <button id="hint-btn" onclick="showHint()">Hint</button>
     <p id="hint-text"></p>
+    <input type="text" id="answerInput" placeholder="Answer">
+    <div class="button-container">
+      <button id="next-btn" onclick="nextQuestion()">Next</button>
+      <button id="hint-btn" onclick="showHint()">Hint</button>
+    </div>
     <h2 id="game-over"></h2>
   </div>
 
   <script src="questions.js"></script>
   <script src="script.js"></script>
-  
 
   <script>
     loadQuestion(); // Call loadQuestion() after the script has finished loading
