@@ -1,3 +1,12 @@
+// JOE GO OVER THIS.
+
+function shuffleQuestions(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 const questions = [
   {
     question: "What does CBC stand for in phlebotomy?",
@@ -117,63 +126,63 @@ const questions = [
   // Add more questions as needed
 ];
 
+shuffleQuestions(questions);
 
 let currentQuestionIndex = 0;
-const score = 0;
+let score = 0;
 
-// Function to load a new question and hide the hint
 function loadQuestion() {
-const currentQuestion = questions[currentQuestionIndex];
-const questionElement = document.getElementById("question");
+  const currentQuestion = questions[currentQuestionIndex];
+  const questionElement = document.getElementById("question");
 
-// Display the question and hide the hint
-if (currentQuestion) {
-  questionElement.textContent = currentQuestion.question;
-  hideHint();
-} else {
-  questionElement.textContent = "No more questions";
-  hideHint();
-}
+  // Display the question and hide the hint
+  if (currentQuestion) {
+    questionElement.textContent = currentQuestion.question;
+    hideHint();
+  } else {
+    questionElement.textContent = "No more questions";
+    hideHint();
+  }
 }
 
-// Function to display the final score
 function gameOver() {
-const finalScore = `Your final score is ${score}`;
-const finalScoreElement = document.getElementById("game-over");
-finalScoreElement.textContent = finalScore;
+  const finalScore = `Your final score is ${score}`;
+  const finalScoreElement = document.getElementById("game-over");
+  finalScoreElement.textContent = finalScore;
 }
 
-// Function to show the hint for the current question
 function showHint() {
-const currentQuestion = questions[currentQuestionIndex]
-const hintElement = document.getElementById("hint-text");
-hintElement.textContent = currentQuestion.hint;
+  const currentQuestion = questions[currentQuestionIndex]
+  const hintElement = document.getElementById("hint-text");
+  hintElement.textContent = currentQuestion.hint;
 }
 
-// Function to hide the hint
 function hideHint() {
-const hintElement = document.getElementById("hint-text");
-hintElement.textContent = "";
+  const hintElement = document.getElementById("hint-text");
+  hintElement.textContent = "";
 }
 
-// Function to check the user's answer
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 function checkAnswer() {
   const userAnswer = document.getElementById("answerInput").value.trim();
   const currentQuestion = questions[currentQuestionIndex];
-  const headerInfo = document.getElementById("header-info"); // Corrected line
+  const headerInfo = document.getElementById("header-info");
 
-  // Check if the answer is correct
   if (userAnswer === currentQuestion.correctAnswer.trim()) {
     headerInfo.textContent = "Correct";
     score++;
   } else {
     headerInfo.textContent = "Incorrect";
-    // alert(`Incorrect. The correct answer is: ${currentQuestion.correctAnswer}`);
   }
 
   currentQuestionIndex++;
 
-  // Load the next question or end the game
   if (currentQuestionIndex < questions.length) {
     loadQuestion();
   } else {
@@ -182,17 +191,14 @@ function checkAnswer() {
   }
 }
 
-// Function to handle moving to the next question
 function nextQuestion() {
-hideHint();
-checkAnswer();
+  hideHint();
+  checkAnswer();
 }
 
-// Function to reset the quiz
 function resetQuiz() {
-currentQuestionIndex = 0;
-loadQuestion();
+  currentQuestionIndex = 0;
+  loadQuestion();
 }
 
-// Call loadQuestion() after the script has finished loading
 loadQuestion();

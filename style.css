@@ -42,3 +42,8 @@ button {
     margin: 15px; /* Adjust margin as needed */
     padding: 15px; /* Adjust padding as needed */
 }
+
+#hint-text {
+    font-weight: bold; /* or use font-weight: 700; */
+    font-size: 15px;
+}
