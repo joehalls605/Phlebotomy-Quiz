@@ -139,14 +139,14 @@ function loadQuestion() {
   if (currentQuestion) {
     questionElement.textContent = currentQuestion.question;
 
-    const shuffledAnswers = shuffleArray([
-      currentQuestion.correctAnswer,
+    const answers = shuffleArray([
       ...getIncorrectAnswers(currentQuestion),
-    ]).slice(0, 3); // Take only the first 3 shuffled answers
+      currentQuestion.correctAnswer,
+    ]).slice(0, 3); // Take only the first 3 answers
 
     answerButtonsContainer.innerHTML = "";
 
-    shuffledAnswers.forEach((answer) => {
+    answers.forEach((answer) => {
       const button = document.createElement("button");
       button.textContent = answer;
       button.onclick = function () {
@@ -161,6 +161,9 @@ function loadQuestion() {
     hideHint();
   }
 }
+
+
+
 
 function shuffleAnswers(question) {
   const answers = [question.correctAnswer, ...getIncorrectAnswers(question)];
