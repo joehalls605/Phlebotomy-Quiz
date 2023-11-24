@@ -1,11 +1,10 @@
-// JOE GO OVER THIS.
-
 function shuffleQuestions(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
+
 
 const questions = [
   {
@@ -134,15 +133,53 @@ let score = 0;
 function loadQuestion() {
   const currentQuestion = questions[currentQuestionIndex];
   const questionElement = document.getElementById("question");
+  const answerButtonsContainer = document.getElementById("answerButtons");
 
   // Display the question and hide the hint
   if (currentQuestion) {
     questionElement.textContent = currentQuestion.question;
+
+    const shuffledAnswers = shuffleArray([
+      currentQuestion.correctAnswer,
+      ...getIncorrectAnswers(currentQuestion),
+    ]).slice(0, 3); // Take only the first 3 shuffled answers
+
+    answerButtonsContainer.innerHTML = "";
+
+    shuffledAnswers.forEach((answer) => {
+      const button = document.createElement("button");
+      button.textContent = answer;
+      button.onclick = function () {
+        checkAnswer(answer);
+      };
+      answerButtonsContainer.appendChild(button);
+    });
+
     hideHint();
   } else {
     questionElement.textContent = "No more questions";
     hideHint();
   }
+}
+
+function shuffleAnswers(question) {
+  const answers = [question.correctAnswer, ...getIncorrectAnswers(question)];
+  return shuffleArray(answers);
+}
+
+function getIncorrectAnswers(question) {
+  const allAnswers = questions.map((q) => q.correctAnswer);
+  const uniqueAnswers = new Set(allAnswers);
+  uniqueAnswers.delete(question.correctAnswer);
+  return Array.from(uniqueAnswers);
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
 
 function gameOver() {
@@ -152,7 +189,7 @@ function gameOver() {
 }
 
 function showHint() {
-  const currentQuestion = questions[currentQuestionIndex]
+  const currentQuestion = questions[currentQuestionIndex];
   const hintElement = document.getElementById("hint-text");
   hintElement.textContent = currentQuestion.hint;
 }
@@ -162,18 +199,15 @@ function hideHint() {
   hintElement.textContent = "";
 }
 
-
-
-function checkAnswer() {
-  const userAnswer = document.getElementById("answerInput").value.trim();
+function checkAnswer(userAnswer) {
   const currentQuestion = questions[currentQuestionIndex];
   const headerInfo = document.getElementById("header-info");
 
   if (userAnswer === currentQuestion.correctAnswer.trim()) {
-    headerInfo.textContent = "Correct";
+    headerInfo.textContent = "Correct!";
     score++;
   } else {
-    headerInfo.textContent = "Incorrect";
+    headerInfo.textContent = "Incorrect!";
   }
 
   currentQuestionIndex++;
