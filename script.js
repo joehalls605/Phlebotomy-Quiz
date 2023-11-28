@@ -20,119 +20,54 @@ const questions = [
   {
     question: "What does CBC stand for in phlebotomy?",
     correctAnswer: "Complete Blood Count",
-    hint: "Hint: Complete B..."
+    hint: "Hint: This test involves a comprehensive analysis of different elements in the bloodstream, exploring the 'complete balance.'"
   },
   {
     question: "Which vein is commonly used for venipuncture?",
     correctAnswer: "Median cubital vein",
-    hint: "Hint: Median c..."
+    hint: "Hint: Seek a central vein in the arm, often the preferred choice for blood collection due to its accessibility and stability."
   },
   {
     question: "What is the purpose of using a tourniquet during venipuncture?",
     correctAnswer: "To make veins more visible and easier to access",
-    hint: "Hint: To enhance vein visibility..."
+    hint: "Hint: Enhances the process by improving visibility and simplifying entry, typically involving a temporary band."
   },
   {
     question: "Which anticoagulant is commonly used in blood collection tubes for coagulation studies?",
     correctAnswer: "Sodium citrate",
-    hint: "Hint: Sodium c..."
+    hint: "Hint: Frequently employed in studies related to blood clotting, this substance starts with 'Sodium c...'"
   },
   {
     question: "What is the purpose of the Order of Draw in venipuncture?",
     correctAnswer: "To prevent cross-contamination of additives between tubes",
-    hint: "Hint: Prevents cross-contamination..."
+    hint: "Hint: Follow a specific sequence during blood collection to maintain the purity of substances, avoiding 'mixing' issues."
   },
   {
     question: "Which color-coded tube is commonly used for serum tests in phlebotomy?",
     correctAnswer: "Red",
-    hint: "Hint: Red tube for serum tests..."
+    hint: "Hint: Look for a tube with a distinct color."
   },
   {
     question: "What is the term for the liquid portion of blood that remains after clotting?",
     correctAnswer: "Serum",
-    hint: "Hint: Liquid portion after clotting..."
+    hint: "Hint: After the blood transforms, the remaining liquid is called the 'golden fluid,' signifying its valuable properties."
   },
   {
     question: "Why is it important to label blood collection tubes accurately?",
     correctAnswer: "To ensure proper patient identification and sample integrity",
-    hint: "Hint: Ensures patient identification..."
+    hint: "Hint: Place significant emphasis on precision when marking tubes to uphold patient identity and safeguard the sample's 'soundness.'"
   },
   {
     question: "What is the purpose of the basilic vein in venipuncture?",
     correctAnswer: "It is a common site for blood collection in the antecubital area",
-    hint: "Hint: Common site in antecubital area..."
+    hint: "Hint: Considered a prime location for blood retrieval, this vein is often associated with the 'inner' part of the elbow region."
   },
   {
     question: "What is the recommended angle for needle insertion during routine venipuncture?",
     correctAnswer: "15 to 30 degrees",
-    hint: "Hint: 15-30 degrees for routine venipuncture..."
+    hint: "Hint: Follow a moderate angle when introducing the needle into the skin during a standard blood collection procedure, aiming between 'low' and 'high.'"
   },
-  {
-    question: "Which test requires the use of a fasting blood sample?",
-    correctAnswer: "Glucose tolerance test",
-    hint: "Hint: Requires fasting blood sample..."
-  },
-  {
-    question: "What is the primary purpose of warming the site before capillary puncture?",
-    correctAnswer: "To increase blood flow and improve sample collection",
-    hint: "Hint: Increases blood flow for sample collection..."
-  },
-  {
-    question: "Which blood component is primarily responsible for oxygen transport?",
-    correctAnswer: "Red blood cells",
-    hint: "Hint: Carries oxygen..."
-  },
-  {
-    question: "What is the recommended technique for cleaning the venipuncture site?",
-    correctAnswer: "Use a circular motion from the center to the periphery",
-    hint: "Hint: Clean in a circular motion..."
-  },
-  {
-    question: "Which vein is often used for venipuncture in pediatric patients?",
-    correctAnswer: "Dorsal hand veins",
-    hint: "Hint: Used for venipuncture in pediatric patients..."
-  },
-  {
-    question: "What is the term for the process of stopping bleeding following venipuncture?",
-    correctAnswer: "Hemostasis",
-    hint: "Hint: Process of stopping bleeding..."
-  },
-  {
-    question: "Why is it important to invert blood collection tubes after filling them?",
-    correctAnswer: "To ensure proper mixing of the blood with additives",
-    hint: "Hint: Ensures proper mixing with additives..."
-  },
-  {
-    question: "Which organization provides guidelines for phlebotomy practices?",
-    correctAnswer: "Clinical and Laboratory Standards Institute (CLSI)",
-    hint: "Hint: Provides phlebotomy guidelines..."
-  },
-  {
-    question: "What is the purpose of a chain of custody form in specimen collection?",
-    correctAnswer: "To document and track the handling of forensic specimens",
-    hint: "Hint: Documents handling of forensic specimens..."
-  },
-  {
-    question: "Which color-coded tube is typically used for complete blood count (CBC) tests?",
-    correctAnswer: "Lavender",
-    hint: "Hint: Lavender tube for CBC tests..."
-  },
-  {
-    question: "What is the primary purpose of a tourniquet during venipuncture?",
-    correctAnswer: "To restrict venous blood flow and make veins more visible",
-    hint: "Hint: Restricts blood flow for better visibility..."
-  },
-  {
-    question: "Why is it important to check the expiration date of blood collection tubes?",
-    correctAnswer: "To ensure the integrity of additives in the tube",
-    hint: "Hint: Ensures additive integrity..."
-  },
-  {
-    question: "Which antiseptic is commonly used for cleaning the venipuncture site?",
-    correctAnswer: "Isopropyl alcohol",
-    hint: "Hint: Common antiseptic for venipuncture site..."
-  },
-  // Add more questions as needed
+  // Add more questions with improved hints as needed
 ];
 
 shuffleQuestions(questions);
