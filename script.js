@@ -140,47 +140,57 @@ shuffleQuestions(questions);
 let currentQuestionIndex = 0;
 let score = 0;
 
+const maxQuestionLimit = 3; // Set your desired maximum question limit
+
 function loadQuestion() {
-  const currentQuestion = questions[currentQuestionIndex];
-  const questionElement = document.getElementById("question");
-  const answerButtonsContainer = document.getElementById("answerButtons");
+  if (currentQuestionIndex < maxQuestionLimit) {
+    const currentQuestion = questions[currentQuestionIndex];
+    const questionElement = document.getElementById("question");
+    const answerButtonsContainer = document.getElementById("answerButtons");
 
-  // Display the question and hide the hint
-  if (currentQuestion) {
-    questionElement.textContent = currentQuestion.question;
+    // Display the question and hide the hint
+    if (currentQuestion) {
+      questionElement.textContent = currentQuestion.question;
 
-    answerButtonsContainer.innerHTML = "";
+      answerButtonsContainer.innerHTML = "";
 
-    const correctAnswer = currentQuestion.correctAnswer;
-    const incorrectAnswers = getIncorrectAnswers(currentQuestion);
+      const correctAnswer = currentQuestion.correctAnswer;
+      const incorrectAnswers = getIncorrectAnswers(currentQuestion);
 
-    // Randomly choose the position for the correct answer button
-    const correctAnswerIndex = Math.floor(Math.random() * 3);
+      // Randomly choose the position for the correct answer button
+      const correctAnswerIndex = Math.floor(Math.random() * 3);
 
-    for (let i = 0; i < 3; i++) {
-      const button = document.createElement("button");
+      for (let i = 0; i < 3; i++) {
+        const button = document.createElement("button");
 
-      if (i === correctAnswerIndex) {
-        button.textContent = correctAnswer;
-        button.onclick = function () {
-          checkAnswer(correctAnswer);
-        };
-      } else {
-        button.textContent = incorrectAnswers.pop(); // Get an incorrect answer
-        button.onclick = function () {
-          checkAnswer(button.textContent);
-        };
+        if (i === correctAnswerIndex) {
+          button.textContent = correctAnswer;
+          button.onclick = function () {
+            checkAnswer(correctAnswer);
+          };
+        } else {
+          button.textContent = incorrectAnswers.pop(); // Get an incorrect answer
+          button.onclick = function () {
+            checkAnswer(button.textContent);
+          };
+        }
+
+        answerButtonsContainer.appendChild(button);
       }
 
-      answerButtonsContainer.appendChild(button);
+      hideHint();
+    } else {
+      questionElement.textContent = "No more questions";
+      hideHint();
+      hideQuestion();
     }
-
-    hideHint();
   } else {
-    questionElement.textContent = "No more questions";
-    hideHint();
+    // If the maximum question limit is reached, end the game
+    gameOver();
+    resetQuiz();
   }
 }
+
 
 function getIncorrectAnswers(currentQuestion) {
   const allAnswers = [...questions.map(q => q.correctAnswer)];
@@ -190,11 +200,24 @@ function getIncorrectAnswers(currentQuestion) {
   return allAnswers.slice(0, 2); // Get two incorrect answers
 }
 
+function hideQuestion(){
+ const quizContainerElement = document.querySelector('.quiz-container');
+ quizContainerElement.style.display = "none";
+}
+
+
 function gameOver() {
+  hideQuestion();
+  const thankYouMessage = "Thank you for playing! ";
   const finalScore = `Your final score is ${score}`;
   const finalScoreElement = document.getElementById("game-over");
-  finalScoreElement.textContent = finalScore;
+  finalScoreElement.innerHTML = thankYouMessage + finalScore;
+
+  // Show the reset button
+  const resetButton = document.getElementById("reset-btn");
+  resetButton.style.display = "block";
 }
+
 
 function showHint() {
   const currentQuestion = questions[currentQuestionIndex];
@@ -227,15 +250,20 @@ function checkAnswer(userAnswer) {
     resetQuiz();
   }
 }
-
 function nextQuestion() {
   hideHint();
-  checkAnswer();
+  loadQuestion();  // Call loadQuestion instead of checkAnswer
 }
 
 function resetQuiz() {
   currentQuestionIndex = 0;
+  score = 0;
+
+  const resetButton = document.getElementById("reset-btn");
+  resetButton.style.display = "none";
+
   loadQuestion();
 }
+
 
 window.onload = loadQuestion;
