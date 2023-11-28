@@ -1,8 +1,18 @@
+// script.js
+
 function shuffleQuestions(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
 
 
@@ -139,21 +149,31 @@ function loadQuestion() {
   if (currentQuestion) {
     questionElement.textContent = currentQuestion.question;
 
-    const answers = shuffleArray([
-      ...getIncorrectAnswers(currentQuestion),
-      currentQuestion.correctAnswer,
-    ]).slice(0, 3); // Take only the first 3 answers
-
     answerButtonsContainer.innerHTML = "";
 
-    answers.forEach((answer) => {
+    const correctAnswer = currentQuestion.correctAnswer;
+    const incorrectAnswers = getIncorrectAnswers(currentQuestion);
+
+    // Randomly choose the position for the correct answer button
+    const correctAnswerIndex = Math.floor(Math.random() * 3);
+
+    for (let i = 0; i < 3; i++) {
       const button = document.createElement("button");
-      button.textContent = answer;
-      button.onclick = function () {
-        checkAnswer(answer);
-      };
+
+      if (i === correctAnswerIndex) {
+        button.textContent = correctAnswer;
+        button.onclick = function () {
+          checkAnswer(correctAnswer);
+        };
+      } else {
+        button.textContent = incorrectAnswers.pop(); // Get an incorrect answer
+        button.onclick = function () {
+          checkAnswer(button.textContent);
+        };
+      }
+
       answerButtonsContainer.appendChild(button);
-    });
+    }
 
     hideHint();
   } else {
@@ -162,27 +182,12 @@ function loadQuestion() {
   }
 }
 
-
-
-
-function shuffleAnswers(question) {
-  const answers = [question.correctAnswer, ...getIncorrectAnswers(question)];
-  return shuffleArray(answers);
-}
-
-function getIncorrectAnswers(question) {
-  const allAnswers = questions.map((q) => q.correctAnswer);
-  const uniqueAnswers = new Set(allAnswers);
-  uniqueAnswers.delete(question.correctAnswer);
-  return Array.from(uniqueAnswers);
-}
-
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
+function getIncorrectAnswers(currentQuestion) {
+  const allAnswers = [...questions.map(q => q.correctAnswer)];
+  const correctAnswerIndex = allAnswers.indexOf(currentQuestion.correctAnswer);
+  allAnswers.splice(correctAnswerIndex, 1); // Remove the correct answer
+  shuffleArray(allAnswers); // Shuffle the array
+  return allAnswers.slice(0, 2); // Get two incorrect answers
 }
 
 function gameOver() {
@@ -233,4 +238,4 @@ function resetQuiz() {
   loadQuestion();
 }
 
-loadQuestion();
+window.onload = loadQuestion;
