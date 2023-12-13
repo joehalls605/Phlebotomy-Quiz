@@ -75,7 +75,7 @@ shuffleQuestions(questions);
 let currentQuestionIndex = 0;
 let score = 0;
 
-const maxQuestionLimit = 3; // Set your desired maximum question limit
+const maxQuestionLimit = 6; // Set your desired maximum question limit
 
 function loadQuestion() {
   if (currentQuestionIndex < maxQuestionLimit) {
@@ -97,6 +97,7 @@ function loadQuestion() {
 
       for (let i = 0; i < 3; i++) {
         const button = document.createElement("button");
+        button.classList.add("answer-button"); // Add a class to the button
 
         if (i === correctAnswerIndex) {
           button.textContent = correctAnswer;
@@ -143,10 +144,14 @@ function hideQuestion(){
 
 function gameOver() {
   hideQuestion();
-  const thankYouMessage = "Thank you for playing! ";
-  const finalScore = `Your final score is ${score}`;
+  const thankYouMessage = "Thank you for playing! <br><br>";
+  const finalScore = `Your final score is ${score} 🩸`;
   const finalScoreElement = document.getElementById("game-over");
   finalScoreElement.innerHTML = thankYouMessage + finalScore;
+
+  // Show the game-over-container
+  const gameOverContainer = document.getElementById("game-over-container");
+  gameOverContainer.style.display = "flex";
 
   // Show the reset button
   const resetButton = document.getElementById("reset-btn");
@@ -168,12 +173,16 @@ function hideHint() {
 function checkAnswer(userAnswer) {
   const currentQuestion = questions[currentQuestionIndex];
   const headerInfo = document.getElementById("header-info");
+  const answerButtons = document.getElementById("answerButtons").getElementsByTagName("button");
 
   if (userAnswer === currentQuestion.correctAnswer.trim()) {
     headerInfo.textContent = "Correct!";
     score++;
+    answerButtons[currentQuestionIndex % 3].style.backgroundColor = "#4CAF50";
+   
   } else {
     headerInfo.textContent = "Incorrect!";
+    answerButtons[currentQuestionIndex % 3].style.backgroundColor = "#FF5252"
   }
 
   currentQuestionIndex++;
