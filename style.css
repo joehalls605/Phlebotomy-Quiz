@@ -7,7 +7,7 @@ body {
     height: 100vh;
     font-family: Sans-serif;
     flex-direction: column;
-    background-color: lavender;
+    background-image: url('images/background.png');
     background-size: cover;
 }
 
@@ -63,7 +63,7 @@ h1 {
 }
 
 button {
-    background-color: lavender;
+    background-color: #E9DAFF;
     font-size: 20px;
     padding: 10px;
     margin: 5px;
@@ -73,8 +73,9 @@ button {
     border-radius: 10px;
 }
 #next-btn {
-    background-color: lightblue;
+    background-color: #B7AACB;
     font-size: 16px;
+    color: white;
     padding: 10px;
     margin: 5px;
     width: 100%;
@@ -83,8 +84,9 @@ button {
     border: 2px solid lightgrey;
 }
 #hint-btn{
-    background-color: lightblue;
+    background-color: #B7AACB;
     font-size: 16px;
+    color: white;
     padding: 10px;
     margin: 5px;
     width: 100%;
