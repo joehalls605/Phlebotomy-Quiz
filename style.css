@@ -5,62 +5,57 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    font-family: 'Georgia', serif; /* Updated font-family to Georgia */
+    font-family: Sans-serif;
     flex-direction: column;
     background-image: url('images/background.png');
     background-size: cover;
 }
 
-/* Add Georgia font-family to other rules as needed */
-#question {
+#question{
     font-weight: bold;
     font-size: 20px;
 }
 
 .score {
-    font-family: 'Georgia', serif;
+    font-family: Sans-serif;
     font-size: large;
 }
 
 .main-container {
-    font-family: 'Georgia', serif;
     border: 1px solid lightgray;
-    margin: 5px;
-    padding: 5px;
+    margin: 5px; /* Adjust margin to control spacing from the edges */
+    padding: 5px; /* Adjust padding to control spacing from the edges */
     background-color: #fff;
     border-radius: 20px;
 }
 
 .quiz-container {
-    font-family: 'Georgia', serif;
     text-align: center;
-    width: 800px;
-    height: 400px;
-    overflow: auto;
+    width: 800px; /* Set a fixed width */
+    height: 400px; /* Set a fixed height */
+    overflow: auto; /* Overflow to enable scrolling if content exceeds the set height */
     font-size: 20px;
     padding: 20px;
     margin-bottom: 40px;
 }
 
 .header-container {
-    font-family: 'Georgia', serif;
     text-align: center;
     max-width: 400px;
     padding: 20px;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
+   
 }
 
 h1 {
-    font-family: 'Georgia', serif;
-    align-self: center;
-    font-size: 30px;
+    align-self: center; /* Center the h1 element within the flex container */
+    font-size: 30px; /* Adjust the font size if needed */
 }
 
 .button-container {
-    font-family: 'Georgia', serif;
     display: flex;
     justify-content: space-between;
     margin-top: 43px;
@@ -73,25 +68,15 @@ button {
     font-size: 20px;
     padding: 10px;
     margin: 5px;
-    width: 100%;
-    height: 100px;
+    width: auto; /* Remove fixed width */
+    min-width: 100px; /* Set a minimum width for the buttons */
+    height: auto; /* Remove fixed height */
+    min-height: 40px; /* Set a minimum height for the buttons */
     border: 2px solid lightgray;
     border-radius: 10px;
 }
 
-#next-btn {
-    font-family: 'Georgia', serif;
-    background-color: #B7AACB;
-    font-size: 16px;
-    color: white;
-    padding: 10px;
-    margin: 5px;
-    width: 100%;
-    height: 40px;
-    border-radius: 10px;
-    border: 2px solid lightgrey;
-}
-
+#next-btn,
 #hint-btn {
     font-family: 'Georgia', serif;
     background-color: #B7AACB;
@@ -99,20 +84,22 @@ button {
     color: white;
     padding: 10px;
     margin: 5px;
-    width: 100%;
-    height: 40px;
+    width: auto; /* Remove fixed width */
+    min-width: 80px; /* Set a minimum width for the buttons */
+    height: auto; /* Remove fixed height */
+    min-height: 30px; /* Set a minimum height for the buttons */
     border-radius: 10px;
     border: 2px solid lightgrey;
 }
 
+
+
 #hint-text {
-    font-family: 'Georgia', serif;
     font-weight: bold;
     font-size: 15px;
 }
 
-#game-over-container {
-    font-family: 'Georgia', serif;
+#game-over-container{
     height: 400px;
     width: 800px;
     display: none;

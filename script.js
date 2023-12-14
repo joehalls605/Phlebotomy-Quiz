@@ -69,16 +69,15 @@ const questions = [
   },
   // Add more questions with improved hints as needed
 ];
-
 shuffleQuestions(questions);
 
 let currentQuestionIndex = 0;
 let score = 0;
 
-const maxQuestionLimit = 6; // Set your desired maximum question limit
+const maxQuestionLimit = 9; // Set your desired maximum question limit
 
 function loadQuestion() {
-  if (currentQuestionIndex < maxQuestionLimit) {
+  if (currentQuestionIndex < maxQuestionLimit - 1) {
     const currentQuestion = questions[currentQuestionIndex];
     const questionElement = document.getElementById("question");
     const answerButtonsContainer = document.getElementById("answerButtons");
@@ -114,6 +113,8 @@ function loadQuestion() {
         answerButtonsContainer.appendChild(button);
       }
 
+      currentQuestionIndex++; // Incremented once after the loop
+
       hideHint();
     } else {
       questionElement.textContent = "No more questions";
@@ -127,20 +128,18 @@ function loadQuestion() {
   }
 }
 
-
 function getIncorrectAnswers(currentQuestion) {
-  const allAnswers = [...questions.map(q => q.correctAnswer)];
+  const allAnswers = [...questions.map((q) => q.correctAnswer)];
   const correctAnswerIndex = allAnswers.indexOf(currentQuestion.correctAnswer);
   allAnswers.splice(correctAnswerIndex, 1); // Remove the correct answer
   shuffleArray(allAnswers); // Shuffle the array
   return allAnswers.slice(0, 2); // Get two incorrect answers
 }
 
-function hideQuestion(){
- const quizContainerElement = document.querySelector('.quiz-container');
- quizContainerElement.style.display = "none";
+function hideQuestion() {
+  const quizContainerElement = document.querySelector(".quiz-container");
+  quizContainerElement.style.display = "none";
 }
-
 
 function gameOver() {
   hideQuestion();
@@ -158,7 +157,6 @@ function gameOver() {
   resetButton.style.display = "block";
 }
 
-
 function showHint() {
   const currentQuestion = questions[currentQuestionIndex];
   const hintElement = document.getElementById("hint-text");
@@ -173,16 +171,17 @@ function hideHint() {
 function checkAnswer(userAnswer) {
   const currentQuestion = questions[currentQuestionIndex];
   const headerInfo = document.getElementById("header-info");
-  const answerButtons = document.getElementById("answerButtons").getElementsByTagName("button");
+  const answerButtons = document
+    .getElementById("answerButtons")
+    .getElementsByTagName("button");
 
   if (userAnswer === currentQuestion.correctAnswer.trim()) {
     headerInfo.textContent = "Correct!";
     score++;
     answerButtons[currentQuestionIndex % 3].style.backgroundColor = "#4CAF50";
-   
   } else {
     headerInfo.textContent = "Incorrect!";
-    answerButtons[currentQuestionIndex % 3].style.backgroundColor = "#FF5252"
+    answerButtons[currentQuestionIndex % 3].style.backgroundColor = "#FF5252";
   }
 
   currentQuestionIndex++;
@@ -194,17 +193,20 @@ function checkAnswer(userAnswer) {
     resetQuiz();
   }
 }
+
 function nextQuestion() {
   hideHint();
-  loadQuestion();  // Call loadQuestion instead of checkAnswer
+  loadQuestion(); // Call loadQuestion instead of checkAnswer
 }
 
 function getIncorrectAnswers(currentQuestion) {
-  const allAnswers = [...questions.map(q => q.correctAnswer)];
+  const allAnswers = [...questions.map((q) => q.correctAnswer)];
   const correctAnswerIndex = allAnswers.indexOf(currentQuestion.correctAnswer);
   allAnswers.splice(correctAnswerIndex, 1); // Remove the correct answer
 
-  const relatedIncorrectAnswers = generateRelatedIncorrectAnswers(currentQuestion);
+  const relatedIncorrectAnswers = generateRelatedIncorrectAnswers(
+    currentQuestion
+  );
 
   // Combine related incorrect answers with other random incorrect answers
   const combinedIncorrectAnswers = relatedIncorrectAnswers.concat(allAnswers);
@@ -214,18 +216,16 @@ function getIncorrectAnswers(currentQuestion) {
 }
 
 function generateRelatedIncorrectAnswers(currentQuestion) {
-
   const relatedAnswers = [];
 
-  const keywords = currentQuestion.question.split(" ").map(word => word.toLowerCase());
+  const keywords = currentQuestion.question
+    .split(" ")
+    .map((word) => word.toLowerCase());
 
-  keywords.forEach(keyword => {
-   
-
+  keywords.forEach((keyword) => {
     if (keyword === "vein" || keyword === "venipuncture") {
       relatedAnswers.push("Arterial vein");
     }
-
   });
 
   return relatedAnswers;
@@ -240,6 +240,5 @@ function resetQuiz() {
 
   loadQuestion();
 }
-
 
 window.onload = loadQuestion;
