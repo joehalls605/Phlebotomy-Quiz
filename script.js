@@ -39,7 +39,7 @@ const questions = [
   },
   {
     question: "What is the purpose of the Order of Draw in venipuncture?",
-    correctAnswer: "To prevent cross-contamination of additives between tubes",
+    correctAnswer: "Prevent cross-contamination of additives between tubes",
     hint: "Hint: Follow a specific sequence during blood collection to maintain the purity of substances, avoiding 'mixing' issues."
   },
   {
@@ -197,6 +197,38 @@ function checkAnswer(userAnswer) {
 function nextQuestion() {
   hideHint();
   loadQuestion();  // Call loadQuestion instead of checkAnswer
+}
+
+function getIncorrectAnswers(currentQuestion) {
+  const allAnswers = [...questions.map(q => q.correctAnswer)];
+  const correctAnswerIndex = allAnswers.indexOf(currentQuestion.correctAnswer);
+  allAnswers.splice(correctAnswerIndex, 1); // Remove the correct answer
+
+  const relatedIncorrectAnswers = generateRelatedIncorrectAnswers(currentQuestion);
+
+  // Combine related incorrect answers with other random incorrect answers
+  const combinedIncorrectAnswers = relatedIncorrectAnswers.concat(allAnswers);
+
+  shuffleArray(combinedIncorrectAnswers); // Shuffle the array
+  return combinedIncorrectAnswers.slice(0, 2); // Get two incorrect answers
+}
+
+function generateRelatedIncorrectAnswers(currentQuestion) {
+
+  const relatedAnswers = [];
+
+  const keywords = currentQuestion.question.split(" ").map(word => word.toLowerCase());
+
+  keywords.forEach(keyword => {
+   
+
+    if (keyword === "vein" || keyword === "venipuncture") {
+      relatedAnswers.push("Arterial vein");
+    }
+
+  });
+
+  return relatedAnswers;
 }
 
 function resetQuiz() {
