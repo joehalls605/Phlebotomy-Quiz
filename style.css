@@ -5,13 +5,13 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    font-family: Sans-serif;
+    font-family: 'Circular', sans-serif; /* Use a round font like Circular */
     flex-direction: column;
     background-image: url('images/background.png');
     background-size: cover;
 }
 
-#question{
+#question {
     font-weight: bold;
     font-size: 20px;
 }
@@ -63,7 +63,7 @@ h1 {
 }
 
 button {
-    font-family: 'Georgia', serif;
+    font-family: 'Circular', sans-serif; 
     background-color: #E9DAFF;
     font-size: 20px;
     padding: 10px;
@@ -78,7 +78,7 @@ button {
 
 #next-btn,
 #hint-btn {
-    font-family: 'Georgia', serif;
+    font-family: 'Circular', sans-serif; 
     background-color: #B7AACB;
     font-size: 16px;
     color: white;

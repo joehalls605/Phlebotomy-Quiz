@@ -77,7 +77,7 @@ let score = 0;
 const maxQuestionLimit = 9; // Set your desired maximum question limit
 
 function loadQuestion() {
-  if (currentQuestionIndex < maxQuestionLimit - 1) {
+  if (currentQuestionIndex < maxQuestionLimit) {
     const currentQuestion = questions[currentQuestionIndex];
     const questionElement = document.getElementById("question");
     const answerButtonsContainer = document.getElementById("answerButtons");
@@ -113,8 +113,6 @@ function loadQuestion() {
         answerButtonsContainer.appendChild(button);
       }
 
-      currentQuestionIndex++; // Incremented once after the loop
-
       hideHint();
     } else {
       questionElement.textContent = "No more questions";
@@ -127,6 +125,7 @@ function loadQuestion() {
     resetQuiz();
   }
 }
+
 
 function getIncorrectAnswers(currentQuestion) {
   const allAnswers = [...questions.map((q) => q.correctAnswer)];
@@ -171,9 +170,7 @@ function hideHint() {
 function checkAnswer(userAnswer) {
   const currentQuestion = questions[currentQuestionIndex];
   const headerInfo = document.getElementById("header-info");
-  const answerButtons = document
-    .getElementById("answerButtons")
-    .getElementsByTagName("button");
+  const answerButtons = document.getElementsByClassName("answer-button");
 
   if (userAnswer === currentQuestion.correctAnswer.trim()) {
     headerInfo.textContent = "Correct!";
