@@ -1,0 +1,30 @@
+function shuffleQuestions(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  /* 
+  This code defines a function called shuffleQuestions that takes an array as its argument and shuffles the elements of the array using the Fisher-Yates shuffle algorithm (also known as the Knuth shuffle). 
+The purpose of shuffling is to randomize the order of elements in the array.
+
+
+The for loop iterates over the elements of the array in reverse order. Starting from the last element and going up to the second element.
+
+const j = Math.floor(Math.random() * (i + 1));
+Inside the loop, a random index is generate, this index is between 0 and the current value of i.
+This is achieved by getting a random decimal between one and 0, then multiplying it by i + 1. Math.floor then rounds it down to the nearest integer.
+
+[array[i], array[j]] = [array[j], array[i]];. This swaps the elements at indicies i and j. This efficiently changes the position of two elements without needing a temporary variable.
+  */
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  
