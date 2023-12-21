@@ -11,17 +11,13 @@ body {
     background-size: cover;
 }
 
-#question {
-    font-weight: bold;
-    font-size: 20px;
+h1 {
+    align-self: center; /* Center the h1 element within the flex container */
+    font-size: 30px; /* Adjust the font size if needed */
 }
 
-.score {
-    font-family: Sans-serif;
-    font-size: large;
-}
 
-.main-container {
+#main-container {
     border: 1px solid lightgray;
     margin: 5px; /* Adjust margin to control spacing from the edges */
     padding: 5px; /* Adjust padding to control spacing from the edges */
@@ -29,17 +25,7 @@ body {
     border-radius: 20px;
 }
 
-.quiz-container {
-    text-align: center;
-    width: 800px; /* Set a fixed width */
-    height: 400px; /* Set a fixed height */
-    overflow: auto; /* Overflow to enable scrolling if content exceeds the set height */
-    font-size: 20px;
-    padding: 20px;
-    margin-bottom: 40px;
-}
-
-.header-container {
+#header-container {
     text-align: center;
     max-width: 400px;
     padding: 20px;
@@ -50,12 +36,29 @@ body {
    
 }
 
-h1 {
-    align-self: center; /* Center the h1 element within the flex container */
-    font-size: 30px; /* Adjust the font size if needed */
+#score {
+    font-family: Sans-serif;
+    font-size: large;
 }
 
-.button-container {
+#quiz-container {
+    text-align: center;
+    width: 800px; /* Set a fixed width */
+    height: 400px; /* Set a fixed height */
+    overflow: auto; /* Overflow to enable scrolling if content exceeds the set height */
+    font-size: 20px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+
+#question {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+#button-container {
     display: flex;
     justify-content: space-between;
     margin-top: 43px;
@@ -91,7 +94,6 @@ button {
     border-radius: 10px;
     border: 2px solid lightgrey;
 }
-
 
 
 #hint-text {
