@@ -126,6 +126,8 @@ function loadQuestion() {
   }
 }
 
+//test.
+
 
 function getIncorrectAnswers(currentQuestion) {
   const allAnswers = [...questions.map((q) => q.correctAnswer)];
