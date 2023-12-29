@@ -15,6 +15,14 @@ function shuffleArray(array) {
   return array;
 }
 
+function shufflePhlebotomyLines(array){
+  for(let p = array.length -1; p > 0; p--){
+    const x = Math.floor(Math.random() * (p + 1));
+    [array[p], array[x]] = [array[x], array[p]];
+  }
+
+}
+
 
 const questions = [
   {
@@ -69,12 +77,29 @@ const questions = [
   },
   // Add more questions with improved hints as needed
 ];
+
+const phlebotomyLines = [
+  {
+    line: "Welcome back, phlebotomy champion! let's see your needle-sharp knowledge."
+  },
+  {
+    line: "Thrilled to have you back for another phlebotomy quiz!"
+  },
+  {
+    line: "Back in action! Shine bright like the perfect blood draw"
+  }
+];
+
+
 shuffleQuestions(questions);
+shufflePhlebotomyLines(phlebotomyLines);
 
 let currentQuestionIndex = 0;
 let score = 0;
+let currentPhlebotomyLinesIndex = 0;
 
 const maxQuestionLimit = 9; // Set your desired maximum question limit
+showPhlebotomyLines();
 
 function loadQuestion() {
   if (currentQuestionIndex < maxQuestionLimit) {
@@ -158,6 +183,13 @@ function gameOver() {
   const resetButton = document.getElementById("reset-btn");
   resetButton.style.display = "block";
 }
+
+function showPhlebotomyLines(){
+  const currentPhlebotomyLine = phlebotomyLines[currentPhlebotomyLinesIndex];
+  const phlebotomyElement = document.getElementById("phlebotomyLines");
+  phlebotomyElement.textContent = currentPhlebotomyLine.line;
+}
+
 
 function showHint() {
   const currentQuestion = questions[currentQuestionIndex];
