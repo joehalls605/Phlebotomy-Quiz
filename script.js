@@ -126,7 +126,8 @@ function loadQuestion() {
   }
 }
 
-//test.
+//test
+console.log()
 
 
 function getIncorrectAnswers(currentQuestion) {
