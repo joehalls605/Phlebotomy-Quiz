@@ -210,10 +210,10 @@ function checkAnswer(userAnswer) {
   if (userAnswer === currentQuestion.correctAnswer.trim()) {
     headerInfo.textContent = "Correct!";
     score++;
-    answerButtons[currentQuestionIndex % 3].style.backgroundColor = "#4CAF50";
+    // answerButtons[currentQuestionIndex % 3].style.backgroundColor = "#4CAF50";
   } else {
     headerInfo.textContent = "Incorrect!";
-    answerButtons[currentQuestionIndex % 3].style.backgroundColor = "#FF5252";
+    // answerButtons[currentQuestionIndex % 3].style.backgroundColor = "#FF5252";
   }
 
   currentQuestionIndex++;
